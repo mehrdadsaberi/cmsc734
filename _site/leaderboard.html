@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Leaderboard | Title</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Leaderboard" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Description" />
+<meta property="og:description" content="Description" />
+<link rel="canonical" href="http://localhost:4000/leaderboard.html" />
+<meta property="og:url" content="http://localhost:4000/leaderboard.html" />
+<meta property="og:site_name" content="Title" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Leaderboard" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Description","headline":"Leaderboard","url":"http://localhost:4000/leaderboard.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#157878">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="/assets/css/style.css?v=">
+  <style>
+
+    table th {
+      background-color: beige;
+    }
+
+    tr:nth-child(even) {
+      background-color:rgb(199, 225, 204);
+    }
+
+    #human_study, #leaderboards {
+      scroll-margin-top: 50px;
+    }
+
+    .content {
+      padding: 16px;
+    }
+
+    .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
+    .sticky + .content {
+      padding-top: 60px;
+    }
+
+    #navbar {
+      overflow: hidden;
+      background-color: rgba(50, 89, 147, 1.0);
+    }
+
+    #navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px;
+      text-decoration: none;
+    }
+
+    #navbar a:hover {
+      background-color: rgba(74, 144, 98, 0.7);
+      color: white;
+    }
+
+    #navbar a.active {
+      background-color: rgba(74, 144, 98, 1.0);
+      color: white;
+    }
+    
+  </style>
+  
+  <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+</head>
+<body>
+  <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+  <div id="home"></div>
+  
+
+  <div id="navbar">
+    <a href="#home">Home</a>
+    <a href="#events">Events</a>
+    <a href="#matches">Matches</a>
+    <a style="float:right;padding-right: 25px;padding-left: 25px;" href="#contact">Contact US</a></li>
+  </div>
+
+  <header class="page-header" role="banner">
+    <h1 class="project-name">Leaderboard</h1>
+    <h2 class="project-tagline"> </h2>
+    
+  </header>
+
+  <main id="content" class="main-content" role="main">
+    <html>
+<head>
+<title>Sort a HTML Table Alphabetically</title>
+<style>
+table {
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th {
+  cursor: pointer;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+</style>
+
+
+
+</head>
+<body>
+
+<table id="myTable">
+  <tr>
+   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+    <th onclick="sortTable(0)">Method</th>
+    <th onclick="sortTable(1)">Country</th>
+    <th onclick="sortTable(2)">Country</th>
+    <th onclick="sortTable(3)">Country</th>
+    <th onclick="sortTable(4)">Country</th>
+    <th onclick="sortTable(5)">Country</th>
+  </tr>
+</table>
+
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
+
+<script>
+    function arrayToTable(tableData) {
+        var table = document.getElementById("myTable");
+        $(tableData).each(function (i, rowData) {
+            let row = table.insertRow(-1);
+            $(rowData).each(function (j, cellData) {
+                let c = row.insertCell(j);
+                c.innerText = cellData;
+            });
+        });
+        return table;
+    }
+
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:4000/sample.csv",
+        success: function (data) {
+            arrayToTable(Papa.parse(data).data);
+        }
+    });
+</script>
+
+</body>
+</html>
+
+<!-- [back](./) -->
+
+
+    <footer class="site-footer">
+      
+      <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+    </footer>
+  </main>
+</body>
+<script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+  </script>
+</html>

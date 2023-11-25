@@ -1,0 +1,10 @@
+title: Title
+description: Description
+show_downloads: true
+google_analytics:
+theme: jekyll-theme-cayman
+markdown: kramdown
+
+show_buttons: false
+
+repository_url: https://github.com/Samyadeep/editbench/tree/main
