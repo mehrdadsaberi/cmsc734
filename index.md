@@ -5,7 +5,7 @@ description:  visualization of soccer data on matches and players
 
 show_buttons: true
 
-# repository_url: https://github.com/deep-ml-research/editval_code
+repository_url: https://github.com/mehrdadsaberi/cmsc734
 ---
 
 # Overview
