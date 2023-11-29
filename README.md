@@ -1,7 +1,9 @@
 # Major League Soccer Visualization
 
 CMSC734 Project - Team 3
+
 Contributors: Mehrdad Saberi, Keivan Rezaei, Atoosa Chegini
+
 Link to the webpage: [mehrdadsaberi.github.io/cmsc734/](https://mehrdadsaberi.github.io/cmsc734/)
 
 ## Running the code:
