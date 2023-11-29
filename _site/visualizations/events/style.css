@@ -1,100 +1,182 @@
-.axis,
-.frame {
-  shape-rendering: crispEdges;
+.event-div circle {
+    stroke: #333;
+    stroke-width: 2;
 }
 
-.axis line {
-  stroke: #ddd;
+.icon text {
+    opacity: 0;
 }
 
-.axis path {
-  display: none;
+
+.icon:hover text {
+    opacity: 1;
 }
 
-.axis .axis-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-anchor: middle;
-  fill: #555;
+#fixedForm {
+    position: absolute;
+    top: 2100px;
+    left: 1050px;
+    font-family: 'PT Sans', sans-serif; /* Set the font family */
+    color: #154260; /* Set the text color */
+    font-size: 12px; /* Set the font size */
+    font-weight: bold; /* Set the font weight to bold */
+    padding: 20px; /* Add padding around the text */
+    background: linear-gradient(135deg, #ecf0f1, #afe8f3);
+    border: 2px solid #144a6e; /* Add a border with color */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow */
+    margin: 20px; /* Add margin around the div */
+    /* vertical-align: top; */
 }
 
-.frame {
-  fill: none;
-  stroke: #aaa;
+#fixedEventReporter {
+    position: fixed;
+    top: 500px;
+    left: 40px;
+    background-color: #220404;
+    padding: 20px;
+    border: 2px solid #144a6e; /* Add a border with color */
+    border-radius: 5px;
+    opacity: 0.8;
 }
 
-circle {
-  fill-opacity: .7;
+#fixedMatchResult {
+    position: absolute;
+    top: 2170px;
+    left: 308px;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ecf0f1, #afe8f3);
+    border: 2px solid #144a6e; /* Add a border with color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* color: #fff; */
+    text-align: center;
+    font-size: 20px;
 }
 
-circle.hidden {
-  fill: #ccc !important;
-  fill-opacity: .2;
+#fancy-button {
+    font-family: 'PT Sans', sans-serif; /* Set the font family */
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    background: linear-gradient(45deg, #2b2ef3, #ec1e22);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-circle:hover {
-  fill: #111 !important;
-  fill-opacity: 1;
+  /* Hover effect */
+#fancy-button:hover {
+    background: linear-gradient(45deg, #ec1e22, #2b2ef3);
+    transform: scale(1.05); /* Scale up on hover */
 }
 
-.d3-tip {
-  line-height: 1;
-  padding: 6px;
-  background: rgba(240, 240, 240, 0.95);
-  color: #333;
-  border-radius: 4px;
-  font-size: 12px;
+.teams {
+    margin-bottom: 10px;
+    font-family: 'PT Sans', sans-serif; /* Set the font family */
 }
 
-/* Creates a small triangle extender for the tooltip */
-.d3-tip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 10px;
-  width: 100%;
-  line-height: 1;
-  color: rgba(240, 240, 240, 0.95);
-  content: "\25BC";
-  position: absolute;
-  text-align: center;
+.team-name {
+    font-size: 22px;
+    font-weight: bold;
 }
 
-/* Style northward tooltips specifically */
-.d3-tip.n:after {
-  margin: -2px 0 0 0;
-  top: 100%;
-  left: 0;
+#team1 {
+    color: #800020;
 }
 
-.d3-tip h5{
-  font-size: 13px;
-  font-weight: 600;
-  margin: 2px 10px 4px 2px;
+#team2 {
+    color: #03459C;
 }
 
-.d3-tip thead td {
-  border-bottom: 1px solid #ccc;
-  font-size: 10px;
-  font-weight: 600;
+.score {
+    font-family: 'PT Sans', sans-serif; /* Set the font family */
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.d3-tip td {
-  padding: 2px 10px 2px 2px;
+.event-div {
+    background-image: url('bg-blur.jpg'); 
+    /* box-shadow: 0 0 50px 50px white inset; */
+    background-size: cover; /* Adjust as needed (cover, contain, etc.) */
+    background-position: center center; /* Adjust as needed */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+    height: 100vh; /* Ensure the background covers the entire viewport */
+    width: 200vh;
+    margin-left: -290px;
+    /* margin: 0; Remove default margin */
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
 }
 
-.d3-tip thead tr {
-  paddin-top: 10px;
+/* Additional styles for content */
+.event-div h1 {
+    color: white;
 }
 
-body {
-    font-family: "Open Sans";
-    margin: 0;
+.event-div .rectangle {
+    position: absolute;
+    top: 2659px;
+    left: 65px;
+    width: 1350px; /* Set the width of the rectangle */
+    height: 7px; /* Set the height of the rectangle */
+    background-color: #edf2f5; /* Set the background color of the rectangle */
+    border: 2px solid #000407; /* Set the border color and width */
+    margin: 20px; /* Add margin to the rectangle */
 }
 
-label {
-    font-size: 13px;
+
+
+#searchContainerEvents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#main {
-    margin: 20px;
+/* Styles for the dropdown */
+.dropdownEvents {
+    position: absolute;
+    top: 2120px;
+    left: 300px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#searchInputEvents {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 8px;
+    margin-right: 10px;
+    width: 200px; /* Adjust as needed */
+}
+
+.dropdown-contentEvents {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+.dropdown-contentEvents li {
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-contentEvents li:hover {
+    background-color: #ddd;
 }

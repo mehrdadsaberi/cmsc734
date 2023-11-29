@@ -1,27 +1,131 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lab 7 - Cars</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Events Visualization</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
 <body>
-    <div id="main">
-        <svg width="700" height="700" style="border: 1px solid #777;">
-        </svg>
-    	<b>Color by:</b>
-        <select id="colorAttrSelector" onchange="onColorChange()">
-	    	<option value="cylinders">cylinders</option>
-	    	<option value="economy (mpg)">economy (mpg)</option>
-	    	<option value="displacement (cc)">displacement (cc)</option>
-	    	<option value="power (hp)">power (hp)</option>
-	    	<option value="weight (lb)">weight (lb)</option>
-	    	<option value="0-60 mph (s)">0-60 mph (s)</option>
-	    	<option value="year">year</option>
-	    </select>  
+    <!-- Your visualization container will go here -->
+    <style>
+        body {
+            background-image: url('background.jpg'); /* Replace 'background.jpg' with your image file */
+            background-size: cover; /* Adjust as needed (cover, contain, etc.) */
+            background-position: center center; /* Adjust as needed */
+            background-repeat: no-repeat; /* Prevent image from repeating */
+            height: 100vh; /* Ensure the background covers the entire viewport */
+            margin: 0; /* Remove default margin */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Additional styles for content */
+        h1 {
+            color: white;
+        }
+    </style>
+    <style>
+        .rectangle {
+            position: absolute;
+            top: 615px;
+            left: 30px;
+            width: 1350px; /* Set the width of the rectangle */
+            height: 5px; /* Set the height of the rectangle */
+            background-color: #edf2f5; /* Set the background color of the rectangle */
+            border: 2px solid #000407; /* Set the border color and width */
+            margin: 20px; /* Add margin to the rectangle */
+        }
+    </style>
+    <div class="rectangle"></div>
+    <div id="fixedForm">
+    <form id="checkboxForm">
+        <label><input type="checkbox" name="option" value="goal"> Goals <br></label>
+        <label><input type="checkbox" name="option" value="corner"> Corners <br></label>
+        <label><input type="checkbox" name="option" value="substitution"> Substitutions  <br></label>
+        <label><input type="checkbox" name="option" value="yellow card"> Yellow Cards <br></label>
+        <label><input type="checkbox" name="option" value="red card"> Red Cards <br></label>
+         <label><input type="checkbox" name="option" value="offside"> Offsides <br> <br></label>
+        <button id="fancy-button" type="button" onclick="updateChosenEvents()">Apply</button>
+    </form></div>
+
+    <div id="fixedMatchResult">
+        <div class="teams">
+            <div class="team-name" id="team1">Home Team</div>
+            <div class="team-name" id="team2">Away Team</div>
+          </div>
+          <div class="score" id="scoreboard">? - ?</div>
     </div>
+
+<style>
+   
+     #searchContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Styles for the dropdown */
+    .dropdown {
+        position: absolute;
+        top: 210px;
+        left: 390px;
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    #searchInput {
+        border: none;
+        outline: none;
+        font-size: 16px;
+        padding: 8px;
+        border-radius: 8px;
+        margin-right: 10px;
+        width: 200px; /* Adjust as needed */
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid #ccc;
+    }
+
+    .dropdown-content li {
+        padding: 12px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .dropdown-content li:hover {
+        background-color: #ddd;
+    }
+
+    #otherDivs {
+        /* Add styles for other divs below the search bar */
+        padding: 20px;
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 300px; /* Adjust as needed */
+    }
+    </style>
+
+    <div id="searchContainer">
+        <div class="tag-input" id="tagInput">
+          <div class="dropdown">
+            <input type="text" id="searchInput" placeholder="Search for games">
+            <div class="dropdown-content" id="itemDropdown">
+            </div>
+          </div>
+        </div>
+      </div>
+    <script src="events.js"></script>
 </body>
-<script src="//d3js.org/d3.v5.min.js"></script>
-<script src="./d3-tip.js"></script>
-<script src="./main.js"></script>
 </html>

@@ -1,0 +1,141 @@
+.map-div {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+}
+
+.map-div .rowMap {
+  display: flex;
+  flex-direction: row;
+}
+
+.map-div img {
+  max-height: 100vh; /* Set maximum height to the viewport height */
+  transform: rotate(90deg); /* Rotate images by 90 degrees */
+  margin: 20px; /* Add margin for better separation */
+}
+.map-div .shapes {
+  position: relative;
+}
+
+
+#searchContainerMap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* z-index: -10; */
+}
+
+.tag-inputMap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+/* Styles for the dropdown */
+.dropdownMap {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+#searchInputMap {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  margin-right: 10px;
+  width: 400px; /* Adjust as needed */
+}
+
+
+
+.dropdown-contentMap {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.dropdown-contentMap li {
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-contentMap li:hover {
+  background-color: #ddd;
+}
+
+
+
+#searchContainerMapPlayer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* z-index: -10; */
+}
+
+.tag-inputMapPlayer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+/* Styles for the dropdown */
+.dropdownMapPlayer {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+#searchInputMapPlayer {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  margin-right: 10px;
+  width: 200px; /* Adjust as needed */
+}
+
+
+
+.dropdown-contentMapPlayer {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.dropdown-contentMapPlayer li {
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-contentMapPlayer li:hover {
+  background-color: #ddd;
+}

@@ -27,21 +27,22 @@
   <link rel="stylesheet" href="/assets/css/style.css?v=">
   <style>
 
-    table th {
-      background-color: beige;
-    }
-
-    tr:nth-child(even) {
-      background-color:rgb(199, 225, 204);
-    }
-
-    #human_study, #leaderboards {
+    #players, #events {
       scroll-margin-top: 50px;
     }
+    #map  {
+      scroll-margin-top: 120px;
 
-    .content {
-      padding: 16px;
     }
+    #matches  {
+      scroll-margin-top: 120px;
+
+    }
+    
+
+    /* .content {
+      padding: 16px;
+    } */
 
     .sticky {
       position: fixed;
@@ -56,6 +57,7 @@
     #navbar {
       overflow: hidden;
       background-color: rgba(50, 89, 147, 1.0);
+      z-index: 2;
     }
 
     #navbar a {
@@ -99,9 +101,11 @@
 
   <div id="navbar">
     <a href="#home">Home</a>
-    <a href="#events">Events</a>
+    <a href="#players">Players</a>
     <a href="#matches">Matches</a>
-    <a style="float:right;padding-right: 25px;padding-left: 25px;" href="#contact">Contact US</a></li>
+    <a href="#events">Events</a>
+    <a href="#map">Events Map</a>
+    <!-- <a style="float:right;padding-right: 25px;padding-left: 25px;" href="#contact">Contact US</a></li> -->
   </div>
 
   <header class="page-header" role="banner">
@@ -115,7 +119,7 @@
   <main id="content" class="main-content" role="main">
     <h1 id="overview">Overview</h1>
 
-<p>ADD DESCRIPTION</p>
+<p>We provide four different visualizations about soccer players and games in our dataset.</p>
 
 <!-- **EDITVAL** is a standardized benchmark for evaluating text-guided image editing methods across diverse edit types, validated through a large-scale human study. 
 
@@ -166,98 +170,53 @@ EditVal benchmark contains 648 unique image-edit operations for 19 classes selec
 
 ![Branching](./teaser_pipeline.png) -->
 
-<div id="events"></div>
-
-<h1 id="game-events">Game Events</h1>
-
 <head>
-    <meta charset="UTF-8" />
-    <title>Lab 7 - Cars</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./visualizations/matches/style.css" />
+    <link rel="stylesheet" href="./visualizations/players/style.css" />
     <link rel="stylesheet" href="./visualizations/events/style.css" />
+    <link rel="stylesheet" href="./visualizations/map/style.css" />
 </head>
 
-<div id="events-main">
-  <svg width="700" height="700" style="border: 1px solid #777;"></svg>
-  <b>Color by:</b>
-  <select id="events-colorAttrSelector" onchange="onColorChange()">
-  <option value="cylinders">cylinders</option>
-  <option value="economy (mpg)">economy (mpg)</option>
-  <option value="displacement (cc)">displacement (cc)</option>
-  <option value="power (hp)">power (hp)</option>
-  <option value="weight (lb)">weight (lb)</option>
-  <option value="0-60 mph (s)">0-60 mph (s)</option>
-  <option value="year">year</option>
-  </select>  
+<h1 id="players">Players</h1>
+
+<p>Select the year and player names to see the comparison among the players for that particular year.</p>
+
+<div id="players">
+
+
+  <div class="player-div">
+    <div id="searchContainer">
+        <div class="tag-input" id="tagInput">
+            <div class="dropdown">
+          <input type="text" id="searchInput" placeholder="Search for players" />
+          <div class="dropdown-content" id="itemDropdown">
+          </div>
+          <select class="year-selector" id="yearSelector">
+          </select>
+        </div>
+    </div>
+  </div>
+  </div>
+
 </div>
 
 <script src="//d3js.org/d3.v5.min.js"></script>
 
-<script src="./visualizations/events/d3-tip.js"></script>
-
-<script src="./visualizations/events/main.js"></script>
-
-<!-- 
-The template to run an [MTurk study](https://requester.mturk.com/){:target="_blank" rel="noopener"} to evaluate the quality of the image editting methods is provided [here](https://drive.google.com/file/d/1r5zzuJy8WXIABhTcTZHXNtWUdWKO9yC-/view?usp=sharing){:target="_blank" rel="noopener"}. 
-
-Together with the template, an input csv file must be provided for the mturk study. Each row of the csv file represents one instance of edit, which contains these four inputs:
-
-*   url_org: url of the original image.
-*   url_edit: url of the editted image.
-*   prompt: the prompt used to edit the image.
-*   class_name: name of the main object in the image.
-
-An example of an input csv file can be seen [here](https://drive.google.com/file/d/1Zf923hlC6mw1F8Gxbajx7Nx8dibwEhTl/view?usp=sharing){:target="_blank" rel="noopener"}. Below is an example of how the mturk study looks to the workers.
-
-<div style="background-color:rgba(34, 139, 34, 0.5);border-radius: 25px;padding:10px;font-size:12px;width:100%;">
-  <div style="display:flex;">
-      <div style="float:left;padding:5px;">
-        <img src="https://editbench.s3.amazonaws.com/edited_images/pix2pix/object_replacement/548957/548957_unedited.png" alt="Original Image" style="width:90%;border-radius:10px;">
-      </div>
-      <div style="float:left;padding:5px;">
-            <img src="https://editbench.s3.amazonaws.com/edited_images/pix2pix/object_replacement/548957/548957_object_replacement_orange_1.5_7.5.png" alt="Edited Image" style="width:90%;border-radius:10px;">
-      </div>
-  </div>
-  <div>
-    <p>The right image is supposed to apply the prompt "Change apple to orange" to the left image.</p>
-  </div>
-  <div style="padding-bottom:20px">
-    <p><b>How well is the edit from the given prompt applied?</b></p>
-      <input type="radio" id="q1_0" name="q1" disabled/>
-      <label for="q1_0" style="padding-right:10px" disabled>Not applied</label>
-      <input type="radio" id="q1_1" name="q1" disabled/>
-      <label for="q1_1" style="padding-right:10px" disabled>Minorly applied</label>
-      <input type="radio" id="q1_2" name="q1" disabled/>
-      <label for="q1_2" style="padding-right:10px" disabled>Adequetly applied</label>
-      <input type="radio" id="q1_3" name="q1" checked="checked"/>
-      <label for="q1_3" style="padding-right:10px">Perfectly applied</label>
-  </div>
-  <div style="padding-bottom:20px">
-    <p><b>How well are the other properties (other than what the edit is targeting) of the main object (apple) preserved in the right image?</b></p>
-      <input type="radio" id="q2_0" name="q2" disabled/>
-      <label for="q2_0" style="padding-right:10px" disabled>Object is completely changed</label>
-      <input type="radio" id="q2_1" name="q2" disabled/>
-      <label for="q2_1" style="padding-right:10px" disabled>Some parts are preserved</label>
-      <input type="radio" id="q2_2" name="q2" disabled/>
-      <label for="q2_2" style="padding-right:10px" disabled>Most parts are preserved</label>
-      <input type="radio" id="q2_3" name="q2" checked="checked"/>
-      <label for="q2_3" style="padding-right:10px">Other properties of the object are perfectly preserved</label>
-  </div>
-  <div>
-    <p><b>How well are the other properties (other than what the edit is targeting) of the main object (apple) preserved in the right image?</b></p>
-      <input type="radio" id="q3_0" name="q3" disabled/>
-      <label for="q3_0" style="padding-right:10px" disabled>Completely changed</label>
-      <input type="radio" id="q3_1" name="q3" disabled/>
-      <label for="q3_1" style="padding-right:10px" disabled>Some parts are preserved</label>
-      <input type="radio" id="q3_2" name="q3" checked="checked"/>
-      <label for="q3_2" style="padding-right:10px">Most parts are preserved</label>
-      <input type="radio" id="q3_3" name="q3" disabled/>
-      <label for="q3_3" style="padding-right:10px" disabled>Perfectly preserved</label>
-  </div>
-</div> -->
-
-<div id="matches"></div>
+<script src="./visualizations/players/main.js"></script>
 
 <h1 id="high-level-match-analysis">High-Level Match Analysis</h1>
+
+<div id="matches">
+  <div class="match-div" style="margin-left:-250px">
+      <!-- <svg width="1300" height="520" style="border: 1px solid #777;"></svg> -->
+
+  </div>
+</div>
+
+<script src="./visualizations/matches/d3-tip.js"></script>
+
+<script src="./visualizations/matches/main.js"></script>
 
 <!-- 
 The numbers below for the human study are calculated only on the first question of the template, which does not consider the changes to the rest of the image. This has been done in order to keep the results comparable to our automatic evaluation framework. For each instant in the human study, a score of `1.0` is given if the edit is `Adequetly applied` or `Perfectly applied`, and a score of `0.0` otherwise.
@@ -297,12 +256,117 @@ The numbers below for the human study are calculated only on the first question 
   </tr>
 </table> -->
 
-<div id="contact"></div>
+<h1 id="events">Events</h1>
 
-<h1 id="contact-us">Contact Us</h1>
+<p>Search for matches to view their events timeline.</p>
 
-<p>Contact us at <code class="language-plaintext highlighter-rouge">xxx@gmail.com</code> if you wish to add your method to the leaderboards.</p>
+<div id="events">
+  <div class="event-div">
+    <div class="rectangle"></div>
+    <div id="fixedForm">
+      <form id="checkboxForm">
+          <label><input type="checkbox" name="option" value="goal" /> Goals <br /></label>
+          <label><input type="checkbox" name="option" value="corner" /> Corners <br /></label>
+          <label><input type="checkbox" name="option" value="substitution" /> Substitutions  <br /></label>
+          <label><input type="checkbox" name="option" value="yellow card" /> Yellow Cards <br /></label>
+          <label><input type="checkbox" name="option" value="red card" /> Red Cards <br /></label>
+          <label><input type="checkbox" name="option" value="offside" /> Offsides <br /> <br /></label>
+          <button id="fancy-button" type="button" onclick="updateChosenEvents()">Apply</button>
+      </form>
+    </div>
+    <div id="fixedMatchResult">
+        <div class="teams">
+            <div class="team-name" id="team1">Home Team</div>
+            <div class="team-name" id="team2">Away Team</div>
+        </div>
+        <div class="score" id="scoreboard">? - ?</div>
+    </div>
+    <div id="searchContainerEvents">
+        <div class="tag-inputEvents" id="tagInputEvents">
+          <div class="dropdownEvents">
+            <input type="text" id="searchInputEvents" placeholder="Search for games" />
+            <div class="dropdown-contentEvents" id="itemDropdownEvents">
+            </div>
+          </div>
+        </div>
+      </div>
 
+
+  </div>
+
+</div>
+
+<script src="./visualizations/events/events.js"></script>
+
+<h1 id="events-map">Events Map</h1>
+
+<p>Search for matches, and select a player from that match, to view their passes. Successful passes are shown with a <span style="color:blue;font-weight:bold">blue</span> arrow, while unsuccessful ones are shown with a <span style="color:red;font-weight:bold">blue</span> arrow.</p>
+
+<div id="map" style="margin-bottom:100px">
+  <div class="map-div">
+    <div class="rowMap" style="margin-bottom: 20px;">
+      <div class="shapes">  
+        <div id="searchContainerMap">
+          <div class="tag-inputMap" id="tagInputMap">
+            <div class="dropdownMap">
+              <input type="text" id="searchInputMap" placeholder="Search for games" />
+              <div class="dropdown-contentMap" id="itemDropdownMap">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="shapes" style="margin-left: 20px;">
+        <div id="searchContainerMapPlayer">
+            <div class="tag-inputMapPlayer" id="tagInputMapPlayer">
+              <div class="dropdownMapPlayer">
+                <input type="text" id="searchInputMapPlayer" placeholder="Search for players" />
+                <div class="dropdown-contentMapPlayer" id="itemDropdownMapPlayer">
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div style="margin-bottom: 20px;font-size:12px;" id="team1Map">
+    </div>
+    <div style="margin-bottom: 50px;font-size:12px;" id="team2Map">
+    </div>
+    <div class="rowMap" style="margin-top:70px">
+      <div class="shapes">
+        <img src="./visualizations/map/assets/soccer-field.jpg" alt="Soccer Field" />
+      </div>
+      <div class="shapes">
+        <img src="./visualizations/map/assets/soccer-field.jpg" alt="Soccer Field" />
+      </div>
+      <div class="shapes">
+      <svg id="firstMap" style="position:absolute;left:-835px;top:-100px;width:900px;height:500px">
+          <defs> 
+            <marker id="arrowhead1" markerWidth="4" markerHeight="3" refX="0" refY="1.5" orient="auto"> 
+                <polygon points="0 0, 4 1.5, 0 3" fill="blue" /> 
+            </marker> 
+            <marker id="arrowhead0" markerWidth="4" markerHeight="3" refX="0" refY="1.5" orient="auto"> 
+                <polygon points="0 0, 4 1.5, 0 3" fill="red" /> 
+            </marker> 
+        </defs>
+          <text id="team1half1Name" x="100" y="50" class="small" font-family="Arial" font-size="17" fill="gold" stroke="orange" stroke-width="0.5"></text>
+          <text id="team2half1Name" x="100" y="435" class="small" font-family="Arial" font-size="17" fill="blue" stroke="purple" stroke-width="0.5"></text>
+          <text id="team2half2Name" x="516" y="50" class="small" font-family="Arial" font-size="17" fill="blue" stroke="purple" stroke-width="0.5"></text>
+          <text id="team1half2Name" x="516" y="435" class="small" font-family="Arial" font-size="17" fill="gold" stroke="orange" stroke-width="0.5"></text>
+          <text x="317" y="50" class="small" font-family="Arial" font-size="14" fill="black" stroke="black" stroke-width="1.0">1st Half</text>
+          <text x="730" y="50" class="small" font-family="Arial" font-size="14" fill="black" stroke="black" stroke-width="1.0">2nd Half</text>
+          </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./visualizations/map/main.js"></script>
+
+<!-- 
+<div id="contact"></div> -->
+
+<!-- 
 <script>
 function sortTable(n, tableID) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
@@ -358,12 +422,12 @@ function sortTable(n, tableID) {
     }
   }
 }
-</script>
-
+</script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
 
+<!-- 
 <script>
     function arrayToTable(tableData, tableID) {
         var table = document.getElementById(tableID);
@@ -393,7 +457,7 @@ function sortTable(n, tableID) {
             arrayToTable(Papa.parse(data).data, "aut_eval_table");
         }
     });
-</script>
+</script> -->
 
 
 
