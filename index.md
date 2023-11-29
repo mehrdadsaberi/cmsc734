@@ -200,7 +200,7 @@ Search for matches to view their events timeline.
 
 # Events Map
 
-Search for matches, and select a player from that match, to view their passes. Successful passes are shown with a <span style="color:blue;font-weight:bold">blue</span> arrow, while unsuccessful ones are shown with a <span style="color:red;font-weight:bold">blue</span> arrow.
+Search for matches, and select a player from that match, to view their passes. Successful passes are shown with a <span style="color:blue;font-weight:bold">blue</span> arrow, while unsuccessful ones are shown with a <span style="color:red;font-weight:bold">red</span> arrow.
 
 <div id="map" style="margin-bottom:100px">
   <div class="map-div" >
